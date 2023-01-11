@@ -16,15 +16,15 @@ def test_001_vision(selenium):
     form.driver.save_screenshot('screen_002.jpg')
 
 
-### тест RT-004 - проверка, что по-умолчанию выбрана форма авторизации по телефону
-def test_004_by_phone(selenium):
+### тест RT-003 - проверка, что по-умолчанию выбрана форма авторизации по телефону
+def test_003_by_phone(selenium):
     form = AuthForm(selenium)
 
     assert form.placeholder.text == 'Мобильный телефон'
 
 
-### тест RT-005 - проверка автосмены "таб ввода"
-def test_005_change_placeholder(selenium):
+### тест RT-004 - проверка автосмены "таб ввода"
+def test_004_change_placeholder(selenium):
     form = AuthForm(selenium)
 
     # ввод телефона
@@ -57,8 +57,8 @@ def test_005_change_placeholder(selenium):
     assert form.placeholder.text == 'Логин'
 
 
-### тест RT-006 - проверка позитивного сценария авторизации по телефону
-def test_006_positive_by_phone(selenium):
+### тест RT-005 - проверка позитивного сценария авторизации по телефону
+def test_005_positive_by_phone(selenium):
     form = AuthForm(selenium)
 
     # ввод телефона
@@ -70,8 +70,8 @@ def test_006_positive_by_phone(selenium):
     assert form.get_current_url() != '/account_b2c/page'
 
 
-### тест RT-007 - проверка негативного сценария авторизации по телефону
-def test_007_negative_by_phone(selenium):
+### тест RT-006 - проверка негативного сценария авторизации по телефону
+def test_006_negative_by_phone(selenium):
     form = AuthForm(selenium)
 
     # ввод телефона
@@ -84,8 +84,8 @@ def test_007_negative_by_phone(selenium):
     assert err_mess.text == 'Неверный логин или пароль'
 
 
-### тест RT-008 - проверка позитивного сценария авторизации по почте
-def test_008_positive_by_email(selenium):
+### тест RT-007 - проверка позитивного сценария авторизации по почте
+def test_007_positive_by_email(selenium):
     form = AuthForm(selenium)
 
     # ввод почты
@@ -97,8 +97,8 @@ def test_008_positive_by_email(selenium):
     assert form.get_current_url() != '/account_b2c/page'
 
 
-### тест RT-009 - проверка негативного сценария авторизации по почте
-def test_009_negative_by_email(selenium):
+### тест RT-008 - проверка негативного сценария авторизации по почте
+def test_008_negative_by_email(selenium):
     form = AuthForm(selenium)
 
     # ввод почты
@@ -111,8 +111,8 @@ def test_009_negative_by_email(selenium):
     assert err_mess.text == 'Неверный логин или пароль'
 
 
-### тест RT-016 - проверка получения временного кода на телефон и открытия формы для ввода кода
-def test_016_get_code(selenium):
+### тест RT-015 - проверка получения временного кода на телефон и открытия формы для ввода кода
+def test_015_get_code(selenium):
     form = CodeForm(selenium)
 
     # ввод телефона
@@ -127,8 +127,8 @@ def test_016_get_code(selenium):
     assert rt_code
 
 
-### тест RT-020 - проверка перехода в форму восстановления пароля и её открытия
-def test_020_forgot_pass(selenium):
+### тест RT-019 - проверка перехода в форму восстановления пароля и её открытия
+def test_019_forgot_pass(selenium):
     form = AuthForm(selenium)
 
     # клик по надписи "Забыл пароль"
@@ -140,8 +140,8 @@ def test_020_forgot_pass(selenium):
     assert reset_pass.text == 'Восстановление пароля'
 
 
-### тест RT-040 - проверка перехода в форму регистрации и её открытия
-def test_021_register(selenium):
+### тест RT-039 - проверка перехода в форму регистрации и её открытия
+def test_039_register(selenium):
     form = AuthForm(selenium)
 
     # клик по надписи "Зарегистрироваться"
@@ -153,8 +153,8 @@ def test_021_register(selenium):
     assert reset_pass.text == 'Регистрация'
 
 
-### тест RT-043 - проверка открытия пользовательского соглашения
-def test_043_agreement(selenium):
+### тест RT-041 - проверка открытия пользовательского соглашения
+def test_041_agreement(selenium):
     form = AuthForm(selenium)
 
     original_window = form.driver.current_window_handle
@@ -171,8 +171,8 @@ def test_043_agreement(selenium):
     assert win_title == 'User agreement'
 
 
-### тест RT-045 - проверка перехода по ссылке авторизации пользователя через вконтакте
-def test_045_auth_vk(selenium):
+### тест RT-043 - проверка перехода по ссылке авторизации пользователя через вконтакте
+def test_043_auth_vk(selenium):
     form = AuthForm(selenium)
     form.vk_btn.click()
     sleep(5)
@@ -180,8 +180,8 @@ def test_045_auth_vk(selenium):
     assert form.get_base_url() == 'oauth.vk.com'
 
 
-### тест RT-046 - проверка перехода по ссылке авторизации пользователя через одноклассники
-def test_024_auth_ok(selenium):
+### тест RT-044 - проверка перехода по ссылке авторизации пользователя через одноклассники
+def test_044_auth_ok(selenium):
     form = AuthForm(selenium)
     form.ok_btn.click()
     sleep(5)
@@ -189,8 +189,8 @@ def test_024_auth_ok(selenium):
     assert form.get_base_url() == 'connect.ok.ru'
 
 
-### тест RT-047 - проверка перехода по ссылке авторизации пользователя через майлру
-def test_025_auth_mailru(selenium):
+### тест RT-045 - проверка перехода по ссылке авторизации пользователя через майлру
+def test_045_auth_mailru(selenium):
     form = AuthForm(selenium)
     form.mailru_btn.click()
     sleep(5)
@@ -198,8 +198,8 @@ def test_025_auth_mailru(selenium):
     assert form.get_base_url() == 'connect.mail.ru'
 
 
-### тест RT-048 - проверка перехода по ссылке авторизации пользователя через google
-def test_026_auth_google(selenium):
+### тест RT-046 - проверка перехода по ссылке авторизации пользователя через google
+def test_046_auth_google(selenium):
     form = AuthForm(selenium)
     form.google_btn.click()
     sleep(5)
@@ -207,8 +207,8 @@ def test_026_auth_google(selenium):
     assert form.get_base_url() == 'accounts.google.com'
 
 
-### тест RT-049 - проверка перехода по ссылке авторизации пользователя через яндекс
-def test_027_auth_ya(selenium):
+### тест RT-047 - проверка перехода по ссылке авторизации пользователя через яндекс
+def test_047_auth_ya(selenium):
     form = AuthForm(selenium)
     form.ya_btn.click()
     sleep(5)
