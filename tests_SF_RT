@@ -28,7 +28,7 @@ def test_004_change_placeholder(selenium):
     form = AuthForm(selenium)
 
     # ввод телефона
-    form.username.send_keys('+79998887766')
+    form.username.send_keys('+79080985351')
     form.password.send_keys('_')
     sleep(5)
 
@@ -39,7 +39,7 @@ def test_004_change_placeholder(selenium):
     form.username.send_keys(Keys.DELETE)
 
     # ввод почты
-    form.username.send_keys('mail@mail.ru')
+    form.username.send_keys('dianchik240@mail.ru')
     form.password.send_keys('_')
     sleep(5)
 
